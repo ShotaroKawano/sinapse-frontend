@@ -1,10 +1,10 @@
 # Flowchart
 
-Flowchart & Flowchart designer component for Vue.js.
+Vue.js 流程图&流程图设计器。
 
-English | [中文](https://github.com/joyceworks/flowchart-vue/blob/master/README-zh_CN.md)
+[English](https://github.com/joyceworks/flowchart-vue/blob/master/README-zh_CN.md) | 中文
 
-## Usage
+## 使用
 
 ```shell script
 yarn add flowchart-vue
@@ -42,10 +42,10 @@ yarn add flowchart-vue
     data: function() {
       return {
         nodes: [
-          // Basic fields
+          // 仅必须字段
           {id: 1, x: 140, y: 270, name: 'Start', type: 'start'},
-          // You can add any generic fields to node, for example: description
-          // It will be passed to @save, @editnode
+          // 你可以添加任意字段，例如: description
+          // 该字段可以从 @save, @editnode 事件中访问到
           {id: 2, x: 540, y: 270, name: 'End', type: 'end', description: 'I'm here'},
         ],
         connections: [
@@ -63,7 +63,7 @@ yarn add flowchart-vue
         // axios.post(url, {nodes, connections}).then(resp => {
         //   this.nodes = resp.data.nodes;
         //   this.connections = resp.data.connections;
-        //   // Flowchart will refresh after this.nodes and this.connections changed
+        //   // 当 this.nodes 或 this.connections 改变时流程图会自动刷新
         // });
       },
       handleEditNode(node) {
@@ -88,13 +88,13 @@ yarn add flowchart-vue
 </script>
 ```
 
-See more at [src/views/App.vue](https://github.com/joyceworks/flowchart-vue/blob/master/src/views/App.vue).
+查看更多：[src/views/App.vue](https://github.com/joyceworks/flowchart-vue/blob/master/src/views/App.vue).
 
 ## Demo
 
 - [GitHub Pages](https://joyceworks.github.io/flowchart-vue/)
 
-- Development Environment
+- 开发环境
 
   ``` shell
   git clone https://github.com/joyceworks/flowchart-vue.git
@@ -103,8 +103,8 @@ See more at [src/views/App.vue](https://github.com/joyceworks/flowchart-vue/blob
   yarn run serve
   ```
   
-  Then open http://localhost:yourport/ in browser.
+  然后在浏览器打开 http://localhost:yourport/ .
 
 ## API
 
-See [Wiki](https://github.com/joyceworks/flowchart-vue/wiki).
+见 [Wiki](https://github.com/joyceworks/flowchart-vue/wiki).
