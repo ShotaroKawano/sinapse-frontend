@@ -23,6 +23,7 @@
                 </select> -->
                 <label for="approver">Summary(Approver)</label>
                 <input class="form-control" id="approver" v-model="nodeForm.summary"/>
+                <!-- <textarea class="form-control" id="approver" v-model="nodeForm.summary"></textarea> -->
                 <!-- <select class="form-control" id="approver" :value="nodeForm.approver.id"
                         @change="handleChangeApprover($event)">
                     <option :value="item.id" :key="'approver-' + item.id" v-for="item in approvers">

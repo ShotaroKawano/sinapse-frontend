@@ -58,7 +58,8 @@ export default {
     width: {
       type: [String, Number],
       // default: 800,
-      default: '60%',
+      // default: '60%',
+      default: '100%',
     },
     height: {
       type: [String, Number],
@@ -92,7 +93,7 @@ export default {
       clickedOnce: false,
       pathClickedOnce: false,
       /**
-       * lines of all internalConnections
+       *  of all internalConnections
        */
       lines: [],
     };
@@ -288,7 +289,7 @@ export default {
             );
             let destinationPosition = that.getNodeConnectorOffset(
               conn.destination.id,
-              conn.destination.position
+              conn.destination.position,
             );
             let colors = {
               pass: "#52c41a",
@@ -309,7 +310,9 @@ export default {
               destinationPosition.y,
               conn.source.position,
               conn.destination.position,
-              colors[conn.type]
+              colors[conn.type],
+              // 追加
+              conn.name
             );
             for (const path of result.paths) {
               path.on("mousedown", function () {
@@ -374,8 +377,15 @@ export default {
       g.classed("guideline", true);
       lineTo(g, x1, y1, x2, y2, 1, "#a3a3a3", [5, 3]);
     },
-    arrowTo(x1, y1, x2, y2, startPosition, endPosition, color) {
+    arrowTo(x1, y1, x2, y2, startPosition, endPosition, color, connName) {
       let g = this.append("g");
+      g.append('text')
+        .attr("fill", "#7CF8FD")
+        .attr("x", x2 + 10)
+        .attr("y", y2 - 40)
+        .style("width", 10 + "px")
+        .style("height", 10 + "px")
+        .text(connName)
       g.classed("connection", true);
       line2(
         g,
@@ -638,7 +648,7 @@ export default {
       that.internalConnections.splice(0, that.internalConnections.length);
       that.nodes.forEach((node) => {
         let newNode = Object.assign({}, node);
-        newNode.width = newNode.width || 300;
+        newNode.width = newNode.width || 400;
         newNode.height = newNode.height || 200;
         that.internalNodes.push(newNode);
       });

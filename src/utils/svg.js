@@ -8,6 +8,7 @@ function lineTo(g, x1, y1, x2, y2, lineWidth, strokeStyle, dash) {
   let path = g.append('path').
       // attr('stroke', strokeStyle).
       attr('stroke', '#7CF8FD').
+      // attr('stroke', 'red').
       attr('stroke-width', 3).
       // attr('fill', 'none').
     // attr('fill', '#D1FDFF').
@@ -631,7 +632,8 @@ function arrowTo(g, x1, y1, x2, y2, lineWidth, strokeStyle) {
       append('path').
       attr('d', 'M2,2 L10,6 L2,10 L6,6 L2,2').
       // attr('fill', strokeStyle);
-    attr('fill', '#7CF8FD');
+      attr('fill', '#7CF8FD');
+      // attr('fill', 'red');
   path.attr('marker-end', 'url(#' + id + ')');
   return path;
 }

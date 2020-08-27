@@ -11,9 +11,10 @@
             id: +new Date(),
             x: 10,
             y: 10,
-            name: 'New',
-            thumbnail: 'operation',
-            approvers: [],
+            thumbnail: 'https://placehold.jp/150x100.png',
+            url: '',
+            name: 'Title',
+            summary: 'Summary',
           })
         "
       >
@@ -125,18 +126,21 @@ export default {
           destination: { id: 2, position: "top" },
           id: 1,
           type: "pass",
+          name: "たとえ話でイメージをつかむ"
         },
         {
           source: { id: 2, position: "bottom" },
           destination: { id: 4, position: "top" },
           id: 2,
           type: "pass",
+          name: "実際に手を動かす"
         },
         {
           source: { id: 2, position: "bottom" },
           destination: { id: 5, position: "top" },
           id: 3,
           type: "pass",
+          name: "実際に手を動かす"
         },
         // {
         //   source: { id: 5, position: "bottom" },
@@ -168,11 +172,12 @@ export default {
     handleDblClick(position) {
       this.$refs.chart.add({
         id: +new Date(),
-        x: position.x,
-        y: position.y,
-        name: "New",
-        thumbnail: "operation",
-        approvers: [],
+        x: 10,
+        y: 10,
+        thumbnail: 'https://placehold.jp/150x100.png',
+        url: '',
+        name: 'Title',
+        summary: 'Summary',
       });
     },
     async handleChartSave(nodes, connections) {
@@ -191,7 +196,7 @@ export default {
       this.connectionDialogVisible = true;
     },
     render: function (g, node, isSelected) {
-      node.width = node.width || 300;
+      node.width = node.width || 400;
       node.height = node.height || 200;
       let borderColor = isSelected ? "#666666" : "#bbbbbb";
 
@@ -213,16 +218,23 @@ export default {
       g.append('foreignObject')
         .attr("x", node.x)
         .attr("y", node.y)
-        .style("width", node.width / 2 + "px")
+        .style("width", node.width * 3 / 8 + "px")
         .style("height", node.height / 2 + "px")
         .append('xhtml:div')
-        .style("width", node.width / 2 + "px")
+        .style("width", node.width * 3 / 8 + "px")
         .style("height", node.height / 2 + "px")
+        // .attr("class", "imgaaa")
         // .style("background-image", "url('https://res.cloudinary.com/practicaldev/image/fetch/s--Zm43GYiy--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/e4jmzv9o1ivd3yz2kj8a.png')")
         .style("background-image", `url(${node.thumbnail})`)
         .style("background-position", "center center")
         .style("background-size", "cover")
         .style("background-repeat", "no-repeat")
+        .style("border-radius", "6px 0 0 0")
+        .style("box-sizing", "border-box")
+        // .style("border-top", "1px solid #7CF8FD")
+        // .style("border-left", "1px solid #7CF8FD")
+        .style("border-top", "1px solid white")
+        .style("border-left", "1px solid white")
         // .style("background-color", "red")
         // .append('img')
         // .attr('src', 'https://res.cloudinary.com/practicaldev/image/fetch/s--Zm43GYiy--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/e4jmzv9o1ivd3yz2kj8a.png')
@@ -262,27 +274,51 @@ export default {
         // });
 
       // title
-      g.append("rect")
-        .attr("x", node.x + node.width / 2)
-        .attr("y", node.y)
-        .attr("stroke", borderColor)
-        .attr("class", "title")
-        .style("height", node.height / 2 + "px")
-        .style("fill", "#f1f3f4")
-        .style("fill", "#3F3F3F")
-        .style("stroke-width", "1px")
-        .style("width", node.width / 2 + "px")
+      // g.append("rect")
+      //   .attr("x", node.x + node.width * 3 / 8)
+      //   .attr("y", node.y)
+      //   .attr("stroke", borderColor)
+      //   .attr("class", "title")
+      //   .style("height", node.height / 2 + "px")
+      //   .style("fill", "#f1f3f4")
+      //   .style("fill", "#3F3F3F")
+      //   .style("stroke-width", "1px")
+      //   .style("width", node.width * 5 / 8 + "px")
 
       g.append('foreignObject')
-        .attr("x", node.x + node.width / 2 + 4)
+        .attr("x", node.x + node.width * 3 / 8)
+        .attr("y", node.y)
+        .attr("class", "title")
+        .style("width", node.width * 5 / 8 + "px")
+        .style("height", node.height / 2 + "px")
+        .append('xhtml:div')
+        // .append('p')
+        .style("width", node.width * 5 / 8 + "px")
+        .style("height", node.height / 2 + "px")
+        // .style("background-color", "red")
+        .style("background-color", "#3F3F3F")
+        .style("border-radius", "0 6px 0 0")
+        .style("box-sizing", "border-box")
+        // .style("border-top", "1px solid #7CF8FD")
+        // .style("border-right", "1px solid #7CF8FD")
+        .style("border-top", "1px solid white")
+        .style("border-right", "1px solid white")
+
+      g.append('foreignObject')
+        .attr("x", node.x + node.width * 3 / 8)
         .attr("y", node.y)
         .attr("class", "unselectable")
-        .style("width", node.width / 2 + "px")
+        .style("width", node.width * 5 / 8 + "px")
         .style("height", node.height / 2 + "px")
+        .style("display", "table")
         .append('xhtml:p')
         // .append('p')
-        .style("width", node.width / 2 - 4 + "px")
+        .style("display", "table-cell")
+        .style("vertical-align", "middle")
+        .style("width", node.width * 5 / 8 + "px")
         .style("height", node.height / 2 + "px")
+        .style("box-sizing", "border-box")
+        .style("padding", "4px 8px 4px 8px")
         .style("color", "white")
         .style("font-weight", "bold")
         .style("margin", 0)
@@ -342,28 +378,51 @@ export default {
       //   body.classed(node.thumbnail, true);
       //   body.attr("stroke", borderColor);
       // } else {
-        let body = g.append("rect").attr("class", "body");
-        body
-          .style("width", node.width + "px")
-          .style("fill", "white")
-          .style("stroke-width", "1px")
-          .style("fill", "#3F3F3F")
-        // if (node.type !== "start" && node.type !== "end") {
-          body
-            .attr("x", node.x)
-            .attr("y", node.y + node.height / 2)
-            // .style("height", roundTo20(node.height / 2  - 20) + "px");
-            .style("height", node.height / 2 + "px");
-        // } else {
-          // body
-          //   .attr("x", node.x)
-          //   .attr("y", node.y)
-          //   .classed(node.type, true)
-          //   .attr("rx", 30);
-          // body.style("height", roundTo20(node.height) + "px");
-        // }
-        body.attr("stroke", borderColor);
-      // }
+      //   let body = g.append("rect").attr("class", "body");
+      //   body
+      //     .style("width", node.width + "px")
+      //     .style("fill", "white")
+      //     .style("stroke-width", "1px")
+      //     .style("fill", "#3F3F3F")
+      //   // if (node.type !== "start" && node.type !== "end") {
+      //     body
+      //       .attr("x", node.x)
+      //       .attr("y", node.y + node.height / 2)
+      //       // .style("height", roundTo20(node.height / 2  - 20) + "px");
+      //       .style("height", node.height / 2 + "px")
+      //   // } else {
+      //     // body
+      //     //   .attr("x", node.x)
+      //     //   .attr("y", node.y)
+      //     //   .classed(node.type, true)
+      //     //   .attr("rx", 30);
+      //     // body.style("height", roundTo20(node.height) + "px");
+      //   // }
+      //   body.attr("stroke", borderColor);
+      // // }
+      g.append('foreignObject')
+        .attr("x", node.x)
+        .attr("y", node.y + node.height / 2)
+        // .attr("class", "body")
+        .style("width", node.width + "px")
+        .style("height", node.height / 2 + "px")
+        .append('xhtml:div')
+        // .append('p')
+        .style("width", node.width + "px")
+        .style("height", node.height / 2 + "px")
+        // .style("margin", 0)
+        .style("background-color", "#707070")
+        // .style("border-radius", "0 4px 0 0")
+        .style("box-sizing", "border-box")
+        .style("border-radius", "0 0 6px 6px")
+        // .style("border-top", "3px solid #6A6A6A")
+        // .style("border-bottom", "1px solid #7CF8FD")
+        // .style("border-right", "1px solid #7CF8FD")
+        // .style("border-left", "1px solid #7CF8FD")
+        .style("border-bottom", "1px solid white")
+        .style("border-right", "1px solid white")
+        .style("border-left", "1px solid white")
+
 
       // body text
       // let text = node.summary
@@ -388,15 +447,17 @@ export default {
       // }
 
       g.append('foreignObject')
-        .attr("x", node.x + 4)
+        .attr("x", node.x)
         .attr("y", node.y + node.height / 2)
         .attr("class", "unselectable")
         .style("width", node.width + "px")
         .style("height", node.height / 2 + "px")
         .append('xhtml:p')
         // .append('p')
-        .style("width", node.width - 4 + "px")
+        .style("width", node.width + "px")
         .style("height", node.height / 2 + "px")
+        .style("box-sizing", "border-box")
+        .style("padding", "4px 8px 4px 8px")
         .style("color", "white")
         .style("margin", 0)
         // .style("word-wrap", "break-word")
