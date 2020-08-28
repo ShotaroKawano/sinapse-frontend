@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">Flowchart Vue</h1>
+    <h1 class="title">Sinapse</h1>
     <!-- <h5 class="subtitle">
       Flowchart & Flowchart designer component for Vue.js.
     </h5> -->
@@ -497,6 +497,7 @@ export default {
 .title {
   margin-top: 10px;
   margin-bottom: 0;
+  color: white;
 }
 
 .subtitle {
