@@ -10,6 +10,7 @@
                 <div class="thumbnail" id="thumbnail">
                   <img v-bind:src="nodeForm.thumbnail" alt="">
                 </div>
+                <input class="form-control" id="thumbnail" v-model="nodeForm.thumbnail"/>
                 <label for="approver">URL</label>
                 <input class="form-control" id="name" v-model="nodeForm.url"/>
                 <label for="name">Title(Name)</label>
